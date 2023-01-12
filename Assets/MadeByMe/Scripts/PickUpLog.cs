@@ -17,6 +17,9 @@ public class PickUpLog : MonoBehaviour
 
     public UnityEvent logPickedUp;
 
+    [SerializeField]
+    private Canvas promptCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +49,7 @@ public class PickUpLog : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             playerNear = true;
+            promptCanvas.GetComponent<Canvas>().enabled = true;
         }
     }
 
@@ -54,6 +58,7 @@ public class PickUpLog : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             playerNear = false;
+            promptCanvas.GetComponent<Canvas>().enabled = false;
         }
     }
 

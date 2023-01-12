@@ -31,6 +31,9 @@ public class PickUpObject : MonoBehaviour
     [SerializeField]
     private GameObject root;
 
+    [SerializeField]
+    private Canvas promptCanvas;
+
     /// <summary>
     /// Private boolean saying whether the object has collided with a wall or other object
     /// </summary>
@@ -119,6 +122,7 @@ public class PickUpObject : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             nearObject = true;
+            promptCanvas.GetComponent<Canvas>().enabled = true;
         }
     }
     /// <summary>
@@ -142,6 +146,7 @@ public class PickUpObject : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             nearObject = false;
+            promptCanvas.GetComponent<Canvas>().enabled = true;
         }
     }
 

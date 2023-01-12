@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class Switch : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class Switch : MonoBehaviour
     /// </summary>
     [SerializeField]
     private Animator animator;
+
+    [SerializeField]
+    private Canvas promptCanvas;
 
     /// <summary>
     /// A boolean that checks to see if the player is near the switch
@@ -62,6 +66,7 @@ public class Switch : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             nearSwitch = true;
+            promptCanvas.GetComponent<Canvas>().enabled = true;
         }
     }
 
@@ -70,6 +75,7 @@ public class Switch : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             nearSwitch = false;
+            promptCanvas.GetComponent<Canvas>().enabled = false;
         }
     }
 
