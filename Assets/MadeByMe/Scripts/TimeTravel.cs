@@ -43,6 +43,7 @@ public class TimeTravel : MonoBehaviour
     /// </summary>
     public UnityEvent changeTime;
 
+
     private void Start()
     {
         changeTime = new UnityEvent();
@@ -61,6 +62,7 @@ public class TimeTravel : MonoBehaviour
                     future.SetActive(true);
                     futureTravel.Invoke();
                     present.SetActive(false);
+                    
                 }
                 // Changes the time to the past
                 else
@@ -70,6 +72,7 @@ public class TimeTravel : MonoBehaviour
                     future.SetActive(false);
                 }
                 changeTime.Invoke();
+                
             }
         }
     }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickUpObject : MonoBehaviour
 {
@@ -35,14 +36,10 @@ public class PickUpObject : MonoBehaviour
     private Canvas promptCanvas;
 
     /// <summary>
-    /// Private boolean saying whether the object has collided with a wall or other object
-    /// </summary>
-    private bool collided = false;
-
-    /// <summary>
     /// Private reference to the objects rigidbody
     /// </summary>
     private Rigidbody rigid;
+    private GameObject volumeControl;
 
     /// <summary>
     /// Returns true if the player is near the object
@@ -65,6 +62,9 @@ public class PickUpObject : MonoBehaviour
         state = PickupType.onGround;
 
         rigid = GetComponent<Rigidbody>();
+
+        volumeControl = GameObject.FindGameObjectWithTag("SoundEffectSettings");
+        volumeControl.GetComponent<Slider>().onValueChanged.AddListener(UpdateAudio);
     }
 
     // Fixed update is used due to the physics engine being used
@@ -74,16 +74,11 @@ public class PickUpObject : MonoBehaviour
         {
             RemoveForces();
             gameObject.transform.SetParent(root.transform, true);
+            promptCanvas.GetComponent<Canvas>().enabled = false;
 
-            // If the gameobject is not collided with a wall then it will move with the player view
-            if (!collided)
-            {
-                // Got the idea for this position formula from this Unity forum post https://answers.unity.com/questions/46583/how-to-get-the-look-or-forward-vector-of-the-camer.html
-                // I forgot that the camera also points in the same forward direction of the GameObject it is attached to
-                rigid.AddForce((playerCamera.transform.position + playerCamera.transform.forward * 2 - transform.position) * 10, ForceMode.Impulse);
-            }
-
-
+            // Got the idea for this position formula from this Unity forum post https://answers.unity.com/questions/46583/how-to-get-the-look-or-forward-vector-of-the-camer.html
+            // I forgot that the camera also points in the same forward direction of the GameObject it is attached to
+            rigid.AddForce((playerCamera.transform.position + playerCamera.transform.forward * 2 - transform.position) * 10, ForceMode.Impulse);
         }
         else if (state == PickupType.onGround)
         {
@@ -114,7 +109,13 @@ public class PickUpObject : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && state == PickupType.pickUP)
         {
             state = PickupType.onGround;
+            promptCanvas.GetComponent<Canvas>().enabled = true;
         }
+    }
+
+    void UpdateAudio(float value)
+    {
+        GetComponent<AudioSource>().volume = value;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -122,7 +123,10 @@ public class PickUpObject : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             nearObject = true;
-            promptCanvas.GetComponent<Canvas>().enabled = true;
+            if (state != PickupType.pickUP)
+            {
+                promptCanvas.GetComponent<Canvas>().enabled = true;
+            }
         }
     }
     /// <summary>
@@ -138,6 +142,7 @@ public class PickUpObject : MonoBehaviour
             // Removes all active forces on the gameobject to it does not fly off due to momentum when picked up
             RemoveForces();
             rigid.useGravity = false;
+            promptCanvas.GetComponent<Canvas>().enabled = false;
         }
     }
 

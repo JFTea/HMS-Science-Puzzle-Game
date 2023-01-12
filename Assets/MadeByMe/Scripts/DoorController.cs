@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class DoorController : MonoBehaviour
 {
@@ -22,12 +23,21 @@ public class DoorController : MonoBehaviour
 
     private GameObject player;
 
+    private GameObject volumeControl;
+
     // Start is called before the first frame update
     void Start()
     {
         CheckState();
         player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<TimeTravel>().changeTime.AddListener(CheckState);
+        volumeControl = GameObject.FindGameObjectWithTag("SoundEffectSettings");
+        volumeControl.GetComponent<Slider>().onValueChanged.AddListener(UpdateAudio);
+    }
+
+    void UpdateAudio(float value)
+    {
+        GetComponent<AudioSource>().volume = value;
     }
 
     void CheckState()
@@ -44,6 +54,7 @@ public class DoorController : MonoBehaviour
         {
             if (!isOpen && !isLocked)
             {
+                GetComponent<AudioSource>().Play();
                 animator.SetTrigger("Open");
                 isOpen = true;
             }
@@ -56,6 +67,7 @@ public class DoorController : MonoBehaviour
         {
             if (isOpen)
             {
+                GetComponent<AudioSource>().Play();
                 animator.SetTrigger("Close");
                 isOpen = false;
             }
@@ -68,16 +80,12 @@ public class DoorController : MonoBehaviour
         {
             if (justUnlocked)
             {
+                GetComponent<AudioSource>().Play();
                 animator.SetTrigger("Open");
                 isOpen = true;
                 justUnlocked = false;
             }
         }
-    }
-
-    private void Close()
-    {
-        animator.SetTrigger("Close");
     }
 
     /// <summary>

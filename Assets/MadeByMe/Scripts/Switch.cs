@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.UI;
 
 public class Switch : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class Switch : MonoBehaviour
     private bool nearSwitch = false;
 
     private GameObject player;
+    private GameObject volumeControl;
 
     // Start is called before the first frame update
     void Start()
@@ -43,14 +45,23 @@ public class Switch : MonoBehaviour
         CheckState();
         player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<TimeTravel>().changeTime.AddListener(CheckState);
+
+        volumeControl = GameObject.FindGameObjectWithTag("SoundEffectSettings");
+        volumeControl.GetComponent<Slider>().onValueChanged.AddListener(UpdateAudio);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && nearSwitch && canSwitch)
         {
+            GetComponent<AudioSource>().Play();
             ToggleSwitch();
         }
+    }
+
+    void UpdateAudio(float value)
+    {
+        GetComponent<AudioSource>().volume = value;
     }
 
     public void CheckState()
