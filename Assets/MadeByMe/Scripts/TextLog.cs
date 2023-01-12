@@ -5,6 +5,9 @@ using UnityEngine;
 public class TextLog : MonoBehaviour
 {
     private TMP_Text displayText;
+
+    [SerializeField]
+    private Canvas canvas;
     // Start is called before the first frame update
     void Awake()
     {
@@ -13,7 +16,7 @@ public class TextLog : MonoBehaviour
 
     public void ImportTextLog(string logName)
     {
-        displayText.text = File.ReadAllText(Application.dataPath + "/MadeByMe/TextLogs/" + logName + ".txt");
-        GetComponentInParent<Canvas>().enabled = true;
+        displayText.text = File.ReadAllText(Application.dataPath + "/MadeByMe/Data/TextLogs/" + logName + ".txt");
+        canvas.enabled = true;
     }
 }

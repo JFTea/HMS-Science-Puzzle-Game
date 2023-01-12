@@ -46,6 +46,10 @@ public class DoorController : MonoBehaviour
         {
             Lock();
         }
+        else
+        {
+            Unlock();
+        }
     }
 
     private void OnTriggerEnter(Collider other)

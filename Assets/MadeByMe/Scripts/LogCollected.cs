@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class LogCollected : MonoBehaviour
@@ -13,24 +12,12 @@ public class LogCollected : MonoBehaviour
     private bool crewLogUnlocked;
 
     [SerializeField]
-    private Image enginLog;
+    private Image engineLog;
     private bool engineLogUnlocked;
 
     [SerializeField]
     private Image medLog;
     private bool medLogUnlocked;
-
-    [SerializeField]
-    private Image finalLog;
-    private bool finalLogUnlocked;
-
-    public UnityEvent finalLogAvailable;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        finalLogAvailable = new UnityEvent();
-    }
 
     public void CollectedLog(string logName)
     {
@@ -42,14 +29,11 @@ public class LogCollected : MonoBehaviour
             case "CrewLog":
                 CrewLogUnlock();
                 break;
-            case "EnginLog":
+            case "EngineLog":
                 EnginLogUnlock();
                 break;
             case "MedLog":
                 MedLogUnlock();
-                break;
-            case "finalLog":
-                FinalLogUnlock();
                 break;
         }
     }
@@ -58,41 +42,27 @@ public class LogCollected : MonoBehaviour
     {
         shieldLogUnlocked = true;
         shieldLog.color = Color.white;
-        CheckIfFinalAvailable();
+        shieldLog.GetComponent<Button>().enabled = true;
     }
 
     private void EnginLogUnlock()
     {
         engineLogUnlocked = true;
-        enginLog.color = Color.white;
-        CheckIfFinalAvailable();
+        engineLog.color = Color.white;
+        engineLog.GetComponent<Button>().enabled = true;
     }
 
     private void CrewLogUnlock()
     {
         crewLogUnlocked = true;
         crewLog.color = Color.white;
-        CheckIfFinalAvailable();
+        crewLog.GetComponent<Button>().enabled = true;
     }
 
     private void MedLogUnlock()
     {
         medLogUnlocked = true;
         medLog.color = Color.white;
-        CheckIfFinalAvailable();
-    }
-
-    void CheckIfFinalAvailable()
-    {
-        if (shieldLogUnlocked && engineLogUnlocked && crewLogUnlocked && medLogUnlocked)
-        {
-            finalLogAvailable.Invoke();
-        }
-    }
-
-    private void FinalLogUnlock()
-    {
-        finalLogUnlocked = true;
-        finalLog.color = Color.white;
+        medLog.GetComponent<Button>().enabled = true;
     }
 }

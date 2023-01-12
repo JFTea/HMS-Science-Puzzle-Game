@@ -38,9 +38,6 @@ public class Room2Puzzle : MonoBehaviour
     [SerializeField]
     private GameObject roomFuture;
 
-    [SerializeField]
-    private GameObject roomOptimiser;
-
     /// <summary>
     /// Private reference to the solution switch
     /// </summary>
@@ -123,7 +120,6 @@ public class Room2Puzzle : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            roomOptimiser.SetActive(true);
             other.GetComponent<TimeTravel>().present = roomPresent;
             other.GetComponent<TimeTravel>().future = roomFuture;
         }

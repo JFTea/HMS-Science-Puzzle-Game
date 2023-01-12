@@ -1,3 +1,0 @@
-This is a test data log
-
-testing for multiple line usage

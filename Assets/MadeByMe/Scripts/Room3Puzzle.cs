@@ -36,9 +36,6 @@ public class Room3Puzzle : MonoBehaviour
     private GameObject hintSwitch3;
 
     [SerializeField]
-    private GameObject roomOptimiser;
-
-    [SerializeField]
     private GameObject MedLog;
 
     private bool hasPlayed = false;
@@ -124,7 +121,6 @@ public class Room3Puzzle : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            roomOptimiser.SetActive(true);
             other.GetComponent<TimeTravel>().present = roomPresent;
             other.GetComponent<TimeTravel>().future = roomFuture;
         }

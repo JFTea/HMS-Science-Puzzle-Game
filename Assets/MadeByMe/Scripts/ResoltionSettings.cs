@@ -9,12 +9,7 @@ public class ResoltionSettings : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Application.targetFrameRate = 60;
     }
 
     public void ChangeResolution(TMP_Dropdown newResolution)
