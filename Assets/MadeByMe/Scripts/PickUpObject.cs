@@ -63,6 +63,7 @@ public class PickUpObject : MonoBehaviour
 
         rigid = GetComponent<Rigidbody>();
 
+        //Gets the volume control object for sound effects and adds UpdateAudio to as a listener to the onValueChanged event
         volumeControl = GameObject.FindGameObjectWithTag("SoundEffectSettings");
         volumeControl.GetComponent<Slider>().onValueChanged.AddListener(UpdateAudio);
     }
@@ -79,6 +80,7 @@ public class PickUpObject : MonoBehaviour
             // Got the idea for this position formula from this Unity forum post https://answers.unity.com/questions/46583/how-to-get-the-look-or-forward-vector-of-the-camer.html
             // I forgot that the camera also points in the same forward direction of the GameObject it is attached to
             rigid.AddForce((playerCamera.transform.position + playerCamera.transform.forward * 2 - transform.position) * 10, ForceMode.Impulse);
+            //Inspired code ends
         }
         else if (state == PickupType.onGround)
         {
@@ -115,11 +117,13 @@ public class PickUpObject : MonoBehaviour
 
     void UpdateAudio(float value)
     {
+        //Sets the volume for the sound effect
         GetComponent<AudioSource>().volume = value;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        //If the player enters the trigger collider nearObject is true and the prompt is enabled if the object is not picked up
         if (other.gameObject.tag == "Player")
         {
             nearObject = true;
@@ -148,10 +152,11 @@ public class PickUpObject : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        //If the player has left the trigger collider nearObject is false and the prompt is disabled
         if (other.gameObject.tag == "Player")
         {
             nearObject = false;
-            promptCanvas.GetComponent<Canvas>().enabled = true;
+            promptCanvas.GetComponent<Canvas>().enabled = false;
         }
     }
 

@@ -28,6 +28,9 @@ public class Switch : MonoBehaviour
     [SerializeField]
     private Animator animator;
 
+    /// <summary>
+    /// Private reference to the prompt for interaction
+    /// </summary>
     [SerializeField]
     private Canvas promptCanvas;
 
@@ -36,7 +39,14 @@ public class Switch : MonoBehaviour
     /// </summary>
     private bool nearSwitch = false;
 
+    /// <summary>
+    /// Private reference to the player gameobject
+    /// </summary>
     private GameObject player;
+
+    /// <summary>
+    /// Private reference to the volume control gameobject
+    /// </summary>
     private GameObject volumeControl;
 
     // Start is called before the first frame update
@@ -52,6 +62,7 @@ public class Switch : MonoBehaviour
 
     private void Update()
     {
+        //If the player is near the switch and the switch is active the player can interact with it with E
         if (Input.GetKeyDown(KeyCode.E) && nearSwitch && canSwitch)
         {
             GetComponent<AudioSource>().Play();
@@ -59,11 +70,18 @@ public class Switch : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates the sound effect volume when the volume settings changed
+    /// </summary>
+    /// <param name="value"></param>
     void UpdateAudio(float value)
     {
         GetComponent<AudioSource>().volume = value;
     }
 
+    /// <summary>
+    /// Checks the current state of the switch
+    /// </summary>
     public void CheckState()
     {
         if (!isOn)
@@ -78,6 +96,7 @@ public class Switch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //If the player is near the switch then nearSwitch is true and the prompt is visible
         if (other.gameObject.tag == "Player")
         {
             nearSwitch = true;
@@ -87,6 +106,7 @@ public class Switch : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        //If the player is near the switch then nearSwitch is false and the prompt is disabled
         if (other.gameObject.tag == "Player")
         {
             nearSwitch = false;
@@ -104,7 +124,7 @@ public class Switch : MonoBehaviour
             TurnOff();
             switchOff.Invoke();
         }
-        else
+        else if(!isOn)
         {
             TurnOn();
             switchOn.Invoke();

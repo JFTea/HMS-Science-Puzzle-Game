@@ -28,6 +28,7 @@ public class ObjectOnPoint : MonoBehaviour
             // Changes the state of the object to solved
             solution.GetComponent<PickUpObject>().state = PickUpObject.PickupType.Solved;
             solution.SetActive(false);
+            //Invokes the solved event
             solved.Invoke();
         }
     }
