@@ -20,12 +20,6 @@ public class PickUpLog : MonoBehaviour
     [SerializeField]
     private Canvas promptCanvas;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        logPickedUp = new UnityEvent();
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -40,8 +34,8 @@ public class PickUpLog : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         player.GetComponent<FirstPersonController>().enabled = false;
-        textLogObject.GetComponent<TextLog>().ImportTextLog(logName);
         logPickedUp.Invoke();
+        textLogObject.GetComponent<TextLog>().ImportTextLog(logName);
     }
 
     private void OnTriggerEnter(Collider other)

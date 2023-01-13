@@ -113,9 +113,6 @@ public class Room3Puzzle : MonoBehaviour
         switch1.GetComponent<Switch>().TurnOff();
         switch2.GetComponent<Switch>().TurnOff();
         switch3.GetComponent<Switch>().TurnOff();
-        hintSwitch1.GetComponent<Switch>().TurnOff();
-        hintSwitch2.GetComponent<Switch>().TurnOff();
-        hintSwitch3.GetComponent<Switch>().TurnOff();
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -70,6 +70,10 @@ public class Switch : MonoBehaviour
         {
             TurnOff();
         }
+        else
+        {
+            TurnOn();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
