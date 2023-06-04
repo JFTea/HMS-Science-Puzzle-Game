@@ -10,7 +10,7 @@ public class ResoltionSettings : MonoBehaviour
         Application.targetFrameRate = 60;
 
         //Sets the resolution to 1080p as a base
-        Screen.SetResolution(1920, 1080,Screen.fullScreenMode);
+        Screen.SetResolution(Screen.width, Screen.height,Screen.fullScreenMode);
     }
 
     /// <summary>
