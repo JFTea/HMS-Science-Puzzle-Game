@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class TimeTravel : MonoBehaviour
 {
@@ -43,10 +45,13 @@ public class TimeTravel : MonoBehaviour
     /// </summary>
     public UnityEvent changeTime;
 
+    private GameObject mainRoom;
+
 
     private void Start()
     {
         changeTime = new UnityEvent();
+        mainRoom = GameObject.Find("MainRoom");
     }
 
     // Update is called once per frame
@@ -56,24 +61,37 @@ public class TimeTravel : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                // Changes the time to the future
-                if (present.activeInHierarchy)
-                {
-                    future.SetActive(true);
-                    futureTravel.Invoke();
-                    present.SetActive(false);
-                    
-                }
-                // Changes the time to the past
-                else
-                {
-                    present.SetActive(true);
-                    pastTravel.Invoke();
-                    future.SetActive(false);
-                }
-                changeTime.Invoke();
-                
+                StopAllCoroutines();
+                GetComponent<FirstPersonController>().enabled = false;
+                GetComponent<ParticleSystem>().Play();
+                StartCoroutine(OnTravel());
             }
         }
+    }
+
+    IEnumerator OnTravel()
+    {
+        yield return new WaitForSeconds(2);
+            // Changes the time to the future
+            if (present.activeInHierarchy)
+            {
+                future.SetActive(true);
+            mainRoom.SetActive(false);
+                futureTravel.Invoke();
+                present.SetActive(false);
+
+            }
+            // Changes the time to the past
+            else
+            {
+                present.SetActive(true);
+                pastTravel.Invoke();
+            mainRoom.SetActive(true);
+            future.SetActive(false);
+            }
+            changeTime.Invoke();
+        GetComponent<FirstPersonController>().enabled = true;
+        GetComponent<ParticleSystem>().Stop();
+        yield return true;
     }
 }
