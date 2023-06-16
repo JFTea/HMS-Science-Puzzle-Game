@@ -61229,7 +61229,7 @@ PrefabInstance:
     - target: {fileID: 2484724969803385635, guid: 5757f861f6e66d743a70eba03b6d317a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9930734024b80d242ae2b3bb460ec31b, type: 2}
+      objectReference: {fileID: 2100000, guid: 82ff49dd7d276f34cbb48cd3a824138b, type: 2}
     - target: {fileID: 2484724970449594772, guid: 5757f861f6e66d743a70eba03b6d317a, type: 3}
       propertyPath: m_Name
       value: Room2PuzzleKey
@@ -61297,7 +61297,7 @@ PrefabInstance:
     - target: {fileID: 2484724971418778055, guid: 5757f861f6e66d743a70eba03b6d317a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9930734024b80d242ae2b3bb460ec31b, type: 2}
+      objectReference: {fileID: 2100000, guid: 82ff49dd7d276f34cbb48cd3a824138b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5757f861f6e66d743a70eba03b6d317a, type: 3}
 --- !u!4 &1491921631 stripped
@@ -80102,9 +80102,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 991879352}
     m_Modifications:
     - target: {fileID: 2484724969803385635, guid: 5757f861f6e66d743a70eba03b6d317a, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484724969803385635, guid: 5757f861f6e66d743a70eba03b6d317a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 82ff49dd7d276f34cbb48cd3a824138b, type: 2}
+      objectReference: {fileID: 2100000, guid: 9930734024b80d242ae2b3bb460ec31b, type: 2}
+    - target: {fileID: 2484724969803385635, guid: 5757f861f6e66d743a70eba03b6d317a, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9930734024b80d242ae2b3bb460ec31b, type: 2}
     - target: {fileID: 2484724970449594772, guid: 5757f861f6e66d743a70eba03b6d317a, type: 3}
       propertyPath: m_Name
       value: Room3Key
@@ -80170,9 +80178,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2484724971418778055, guid: 5757f861f6e66d743a70eba03b6d317a, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484724971418778055, guid: 5757f861f6e66d743a70eba03b6d317a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 82ff49dd7d276f34cbb48cd3a824138b, type: 2}
+      objectReference: {fileID: 2100000, guid: 9930734024b80d242ae2b3bb460ec31b, type: 2}
+    - target: {fileID: 2484724971418778055, guid: 5757f861f6e66d743a70eba03b6d317a, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9930734024b80d242ae2b3bb460ec31b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5757f861f6e66d743a70eba03b6d317a, type: 3}
 --- !u!4 &2034039723 stripped

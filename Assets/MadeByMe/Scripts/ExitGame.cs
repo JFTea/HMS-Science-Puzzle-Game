@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ExitGame : MonoBehaviour
 {
@@ -7,6 +8,6 @@ public class ExitGame : MonoBehaviour
     /// </summary>
     public void Exit()
     {
-        Application.Quit();
+        SceneManager.LoadScene(0,LoadSceneMode.Single);
     }
 }
