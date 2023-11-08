@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00080954505, g: 0.004162026, b: 0.020064274, a: 1}
+  m_IndirectSpecularColor: {r: 0.010485779, g: 0.052983798, b: 0.15318781, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1464,7 +1464,16 @@ MonoBehaviour:
     Sci-Fi Styled Modular Pack by: karboosx
 
     Futuristic
-    Panel Textures LITE by: TeenZombie Software'
+    Panel Textures LITE by: TeenZombie Software
+
+
+    Music:
+
+
+    Horror Abyss -
+    Ovani Sound
+
+    Unplugged Sunrise - Ovani Sound'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

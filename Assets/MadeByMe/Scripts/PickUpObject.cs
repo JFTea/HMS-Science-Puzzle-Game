@@ -65,6 +65,7 @@ public class PickUpObject : MonoBehaviour
 
         //Gets the volume control object for sound effects and adds UpdateAudio to as a listener to the onValueChanged event
         volumeControl = GameObject.FindGameObjectWithTag("SoundEffectSettings");
+        if (volumeControl != null )
         volumeControl.GetComponent<Slider>().onValueChanged.AddListener(UpdateAudio);
     }
 

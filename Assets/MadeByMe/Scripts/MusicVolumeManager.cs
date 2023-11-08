@@ -14,6 +14,7 @@ public class MusicVolumeManager : MonoBehaviour
         //Finds the volume control object
         volumeControl = GameObject.FindGameObjectWithTag("MusicSettings");
         //Adds a listener to the onValueChanged event
+        if(volumeControl != null )
         volumeControl.GetComponent<Slider>().onValueChanged.AddListener(UpdateAudio);
     }
 

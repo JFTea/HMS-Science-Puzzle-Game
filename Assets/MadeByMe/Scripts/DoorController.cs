@@ -55,6 +55,7 @@ public class DoorController : MonoBehaviour
         //Finds the sound effects settings gameobject
         volumeControl = GameObject.FindGameObjectWithTag("SoundEffectSettings");
         //Adds the UpdateAudio method to the listeners for the onValueChanged event for the sound effects volume setting
+        if(volumeControl != null )
         volumeControl.GetComponent<Slider>().onValueChanged.AddListener(UpdateAudio);
     }
 

@@ -57,6 +57,7 @@ public class Switch : MonoBehaviour
         player.GetComponent<TimeTravel>().changeTime.AddListener(CheckState);
 
         volumeControl = GameObject.FindGameObjectWithTag("SoundEffectSettings");
+        if (volumeControl != null )
         volumeControl.GetComponent<Slider>().onValueChanged.AddListener(UpdateAudio);
     }
 
